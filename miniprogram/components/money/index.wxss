@@ -1,0 +1,15 @@
+/* components/money/index.wxss */
+
+.money-input {
+    display: flex;
+    align-items: center;
+}
+
+.money-input-text {
+    width: 200rpx;
+    height: 60rpx;
+}
+
+.money-input-type {
+    min-width: 200rpx;
+}

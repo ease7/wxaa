@@ -1,0 +1,5 @@
+/* miniprogram/pages/forms/cost/index.wxss */
+
+.input {
+  padding: 20rpx 0;
+}

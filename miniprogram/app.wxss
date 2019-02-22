@@ -1,0 +1,7 @@
+/**app.wxss**/
+@import 'weui.wxss';
+
+.container {
+ 
+  box-sizing: border-box;
+} 

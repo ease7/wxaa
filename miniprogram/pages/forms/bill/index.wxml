@@ -1,0 +1,43 @@
+<!-- miniprogram/pages/forms/bill/index.wxml -->
+<view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{name}}" placeholder="请输入名称" bindblur='inputNameBlur' />
+      </view>
+
+    </view>
+    <view class="weui-cell weui-cell_input">
+
+
+      <view class="weui-cell__hd">
+        <view class="weui-label">描述</view>
+      </view>
+      <view class="weui-cell__bd input">
+        <textarea class="weui-textarea" value='{{description}}' placeholder="请输入文本" style="height: 3.3em" bindinput='inputDesBlur' maxlength='100' />
+        <view class="weui-textarea-counter">{{descriptionCount}}/100</view>
+      </view>
+
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">币种</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-input">
+          <my-money-type bind:valueChange="valueChange" value="{{currencyType}}"></my-money-type>
+        </view>
+
+      </view>
+    </view>
+
+
+
+  </view>
+  <view class="weui-btn-area">
+    <button class="weui-btn" type="primary" bindtap="saveClick">确定</button>
+  </view>
+</view>

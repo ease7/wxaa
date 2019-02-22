@@ -1,0 +1,44 @@
+/* miniprogram/pages/home/index.wxss */
+
+.bill-list {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.bill-list .bill-item {
+  padding: 20rpx 25rpx 20rpx 25rpx;
+  border-bottom: 1rpx solid #ccc;
+  position: relative;
+}
+
+.bill-item .name {
+  display: block;
+  text-decoration: underline;
+}
+
+.bill-item .des {
+  font-size: 28rpx;
+  color: #999;
+  word-break: break-all;
+}
+
+.bill-item .time {
+  font-size: 28rpx;
+  color: #999;
+  display: block;
+}
+
+.bill-item .price {
+  font-size: 28rpx;
+  color: #999;
+  position: absolute;
+  right: 30rpx;
+  top: 0rpx;
+  display: block;
+  height: 100%;
+  width:120rpx;
+}
+
+.add-btn {
+  width: 50%;
+}

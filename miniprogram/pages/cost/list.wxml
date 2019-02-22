@@ -1,0 +1,17 @@
+<!--miniprogram/pages/cost/list.wxml-->
+<view>
+
+  <view>{{id}}</view>
+  <view>
+    <view wx:for="{{costList}}" wx:key="item._id">
+      <view>{{item.type}}</view>
+      <view>{{item.total}}</view>
+    </view>
+
+    <button class="add-btn weui-btn" type="primary" bindtap="addClick">
+      添加
+    </button>
+  </view>
+
+
+</view>

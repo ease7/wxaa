@@ -1,0 +1,2 @@
+<!--components/value/value.wxml-->
+<text>{{displayValue}}</text>
