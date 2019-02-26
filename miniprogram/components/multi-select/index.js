@@ -43,6 +43,7 @@ Component({
     bindTypeChange: function(event) {
 
       let index = parseInt(event.detail.value);
+      let types = this.data.typeList;
       let typeValue = this.data.typeList[index].name;
 
       this.setData({
@@ -51,7 +52,7 @@ Component({
       });
 
       this.triggerEvent("valueChange", {
-        type: index,
+        typeValue: types[index].value,
         typeName: typeValue
       })
     }

@@ -1,19 +1,22 @@
 // miniprogram/pages/forms/bill/index.js
 import bill from '../../../api/bill'
 
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    currencyType: 0,
+    currencyType: 1,
     currencyTypeName: "",
     name: "",
     description: "",
     descriptionCount: 0,
     overWrite: false,
-    editId: ""
+    editId: "",
+    users:[]
   },
 
   /**
@@ -30,7 +33,8 @@ Page({
           description: result.description,
           descriptionCount: result.description.length,
           currencyType: result.currencyType,
-          editId: editId
+          editId: editId,
+          users:result.users
         });
       })
     }
@@ -83,14 +87,19 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
+    let id = this.data.editId;
 
+    return {
+      title: "分享账单给你",
+      path: "/pages/share/bill/index?billid=" + id
+    }
   },
   valueChange: function(event) {
-    console.log(event);
+    
     let value = event.detail;
-
+    console.log(value);
     this.setData({
-      currencyType: value.type,
+      currencyType: value.typeValue,
       currencyTypeName: value.typeName
     })
   },
@@ -113,9 +122,18 @@ Page({
     let name = this.data.name;
     let type = this.data.currencyType;
     let description = this.data.description;
-    let overWrite = this.data.overWrite;
     let id = this.data.editId;
+    let billUsers = []; // 参与AA的用户
+    let currentUserInfo = app.globalData.userInfo;
+    let openid = app.globalData.openid;
     let _this = this;
+
+    billUsers.push({
+      openid: openid,
+      avatarUrl: currentUserInfo.avatarUrl,
+      nickName: currentUserInfo.nickName
+    })
+
 
     wx.showLoading({
       title: '数据保存中',
@@ -125,8 +143,10 @@ Page({
     if (name) {
       bill.saveBill({
         _id: id,
+        copenid: openid,
         name: name,
         description: description,
+        users: billUsers,
         currencyType: type
       }).then(res => {
         // 保存成功

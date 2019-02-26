@@ -1,12 +1,14 @@
 {
   "pages": [
-    "pages/forms/cost/index",
     "pages/home/index",
+    "pages/forms/cost/index",
+    "pages/cost/list",
+    "pages/share/bill/index",
+    "pages/user/login/index",
+    "pages/index/index",
     "pages/forms/bill/index",
     "pages/bills/index",
     "pages/mybills/index",
-    "pages/cost/list",
-    "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

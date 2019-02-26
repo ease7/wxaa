@@ -1,6 +1,7 @@
-// miniprogram/pages/cost/list.js
-import cost from '../../api/cost';
-import types from '../../api/types';
+// miniprogram/pages/share/bill/index.js
+import bill from '../../../api/bill.js';
+
+var app = getApp();
 
 Page({
 
@@ -8,46 +9,40 @@ Page({
    * 页面的初始数据
    */
   data: {
-    billId: "XG-rVt7E7L4wQVwr",
-    costList: []
+    shareBillId: ""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id;
-    let costTypes = types.getCurrencyTypes();
+    console.log("分享后的参数:", options);
+    // options.billid = "XG-rVt7E7L4wQVwr";
+    let shareBillId = options.billid || "";
 
 
-    if (id) {
-      this.setData({
-        billId: id
-      })
+    this.setData({
+      shareBillId: shareBillId
+    });
+
+    this.join();
+    app.userInfoReady = (info) => {
+      this.join();
     }
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
- 
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let billId = this.data.billId;
 
-    cost.getCostList(billId).then(res => {
-
-      console.log(res);
-      this.setData({
-        costList: res
-      });
-    })
   },
 
   /**
@@ -84,12 +79,16 @@ Page({
   onShareAppMessage: function() {
 
   },
-  addClick: function() {
-    let billId = this.data.id;
-
-    wx.navigateTo({
-      url: '../forms/cost/index?billid=' + billId,
-    })
-  },
-
+  join() {
+    let billId = this.data.shareBillId;
+    let info = app.globalData.userInfo;
+    console.log("join:", info, ", billId:", billId);
+    if (info && billId) {
+      bill.addToBill(info, billId).then(res => {
+        wx.switchTab({
+          url: '../../home/index',
+        });
+      });
+    }
+  }
 })

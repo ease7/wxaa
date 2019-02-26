@@ -1,0 +1,3 @@
+<!--miniprogram/pages/user/login/index.wxml-->
+<view>sdfsdf</view>
+<button bindgetuserinfo="onGetUserInfo" open-type="getUserInfo">登陆</button>

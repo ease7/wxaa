@@ -1,1 +1,10 @@
 /* miniprogram/pages/cost/list.wxss */
+
+.cost-list {
+  border-top:1rpx solid #ddd;
+}
+
+.cost-item {
+  font-size: 30rpx;
+  border-bottom: 1rpx solid #ddd;
+}

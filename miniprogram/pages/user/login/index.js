@@ -1,6 +1,7 @@
-// miniprogram/pages/cost/list.js
-import cost from '../../api/cost';
-import types from '../../api/types';
+// miniprogram/pages/user/login/index.js
+import wxuser from '../../../api/wxuser.js';
+
+const app = getApp();
 
 Page({
 
@@ -8,23 +9,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    billId: "XG-rVt7E7L4wQVwr",
-    costList: []
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    let id = options.id;
-    let costTypes = types.getCurrencyTypes();
-
-
-    if (id) {
-      this.setData({
-        billId: id
-      })
-    }
 
   },
 
@@ -32,22 +23,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
- 
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    let billId = this.data.billId;
 
-    cost.getCostList(billId).then(res => {
-
-      console.log(res);
-      this.setData({
-        costList: res
-      });
-    })
   },
 
   /**
@@ -84,12 +67,19 @@ Page({
   onShareAppMessage: function() {
 
   },
-  addClick: function() {
-    let billId = this.data.id;
-
-    wx.navigateTo({
-      url: '../forms/cost/index?billid=' + billId,
-    })
+  loginClick: function() {
+  
   },
 
+  onGetUserInfo: function(e) {
+    if (e.detail.userInfo) {
+      let userInfo = e.detail.userInfo;
+      console.log("跳转主页:", userInfo);
+      app.setUserInfo(e.detail.userInfo);
+
+      wx.switchTab({
+        url: '../../home/index',
+      });
+    }
+  }
 })

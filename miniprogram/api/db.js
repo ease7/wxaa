@@ -11,6 +11,10 @@ class db {
     return "cost"
   }
 
+  static get USER() {
+    return "user"
+  }
+
 
   static getFailHander(reject) {
     return (err) => {
@@ -32,7 +36,7 @@ class db {
 
   static getResultHandler(resolve, reject) {
     return {
-      success: function(res) {
+      success: function (res) {
         resolve(res.data);
       },
       fail: this.getFailHander(reject),
@@ -58,29 +62,63 @@ class db {
     })
   }
 
+  /**
+   * 更新数据
+   * 必须携带当前用户的openid
+   */
   static update(name, data) {
     return new Promise((resolve, reject) => {
       var _db = wx.cloud.database();
       var handlers = this.getDefaultHandler(resolve, reject);
-
-      console.log(data);
-
       var updateObj = {};
-      for (var propertyName in data) {
-        let value = data[propertyName];
+      let copenid = data.copenid || "";
+      let dataOpenId = data._openid || "";
+      console.log("更新参数：", data);
 
-        if (propertyName !== "_id") {
+      if (copenid && dataOpenId) {
+        if (copenid === dataOpenId) {
+          // 当前用户的id和数据的用户id一致 
+          for (var propertyName in data) {
+            let value = data[propertyName];
 
-          updateObj[propertyName] = value;
+            if (propertyName !== "_id" && propertyName !== "_openid") {
+
+              updateObj[propertyName] = value;
+            }
+          }
+
+          console.log("更新值", updateObj);
+
+          return _db.collection(name).doc(data._id).update({
+            data: updateObj,
+            ...handlers
+          });
+        } else {
+          // 数据不属于当前用户时，调用云函数更新数据
+          return new Promise((resolve, reject) => {
+
+            wx.cloud.callFunction({
+              name: "db",
+              data: {
+                name: name,
+                data: data
+              },
+              success: (res) => {
+                console.log("db function:", res);
+                resolve(res);
+              },
+              fail: (err) => {
+                reject(err)
+              }
+            })
+          });
         }
+      } else {
+        reject("必须指定更新数据的openid和当前用户的openid");
       }
 
-      console.log("更新obj", updateObj);
 
-      _db.collection(name).doc(data._id).update({
-        data: updateObj,
-        ...handlers
-      })
+
     })
   }
 
@@ -102,10 +140,12 @@ class db {
 
       var queryObj = {};
       for (var propertyName in where) {
-        let value = where[propertyName];
+        let value = where[propertyName] || "";
 
-        if (value && value.type === "_in") {
+        if (value.type === "_in") {
           queryObj[propertyName] = _db.command.in(value.value);
+        } else if (value.type === "RegExp") {
+          queryObj[propertyName] = new RegExp(value.regexp);
         } else {
           queryObj[propertyName] = value;
         }

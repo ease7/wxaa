@@ -1,0 +1,3 @@
+<!--miniprogram/pages/share/bill/index.wxml-->
+<text>BILLID:{{shareBillId}}</text>
+
