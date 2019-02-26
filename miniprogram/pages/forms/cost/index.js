@@ -1,6 +1,8 @@
 // miniprogram/pages/forms/cost/index.js
 import cost from '../../../api/cost';
 import bill from '../../../api/bill';
+import CachePool from '../../../api/CachePool.js';
+
 var app = getApp();
 
 Page({
@@ -23,7 +25,7 @@ Page({
   onLoad: function(options) {
     let billId = options.billid;
     let globalUserInfo = app.globalData.userInfo;
-    billId = "XG-rVt7E7L4wQVwr";
+    // billId = "XG-rVt7E7L4wQVwr";
 
     if (billId) {
       this.setData({
@@ -83,10 +85,16 @@ Page({
   onShareAppMessage: function() {
 
   },
+  /**
+   * 获取账单详情
+   */
   getBillItem: function(billId) {
     bill.getBillItem(billId).then(info => {
+      console.log("当前账单信息:", billId);
+
       if (info) {
-        console.log(info);
+     
+        CachePool.setValue(CachePool.BILL, info._id, info);
         let users = info.users;
 
         let options = [];
@@ -168,7 +176,7 @@ Page({
           nickName: element.nickName,
           openid: element.openid
         });
-      } 
+      }
     }
 
     return res;
@@ -196,8 +204,6 @@ Page({
     let userInfo = app.globalData.userInfo;
     let costers = this.getCosters(); // 参与AA的用户openid
 
-   
-    console.log(costers);
 
     cost.saveCostItem({
       billId: billId,
@@ -205,7 +211,8 @@ Page({
       moneyType: moneyType,
       costType: costType,
       costers: costers
-    }).then(res=>{
+    }).then(res => {
+      cost.sumBillCost(billId);
       wx.navigateBack();
     });
   }

@@ -68,6 +68,7 @@ class bill {
     }
   }
 
+  // 添加一个用户到账单
   static addToBill(user, billid) {
 
     if (billid) {
@@ -102,6 +103,7 @@ class bill {
     }
   }
 
+  // 获取账单信息
   static getBillItem(id) {
     return db.getResultWhere(db.BILL, {
       _id: id
@@ -113,6 +115,7 @@ class bill {
     })
   }
 
+  // 获取我的账单列表
   static getMyBillList(openid) {
     return db.getResultWhere(db.BILL, {
       userIds: {
@@ -121,6 +124,8 @@ class bill {
       }
     });
   }
+
+
 }
 
 export default bill;

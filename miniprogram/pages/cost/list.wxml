@@ -3,7 +3,7 @@
 
   <view>{{billId}}</view>
   <view class="cost-list">
-    <view wx:for="{{costList}}" wx:key="item._id" wx:for-item="cost" class="cost-item">
+    <view wx:for="{{costList}}" wx:key="item._id" wx:for-item="cost" class="cost-item" bindtap='editClick' data-index="item._id">
       <view>{{cost.money}}</view>
       <view>{{cost.moneyType}}</view>
       <my-value value="{{cost.createTime}}" type="date"></my-value>

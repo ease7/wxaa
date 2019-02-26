@@ -32,7 +32,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function() {
- 
+
   },
 
   /**
@@ -85,11 +85,19 @@ Page({
 
   },
   addClick: function() {
-    let billId = this.data.id;
+    let billId = this.data.billId;
 
     wx.navigateTo({
       url: '../forms/cost/index?billid=' + billId,
     })
   },
+  editClick: function(event) {
+    let billId = this.data.id;
+    let costId = event.detail.value;
+
+    wx.navigateTo({
+      url: '../forms/cost/index?billid=' + billId + "&costid=" + costId,
+    })
+  }
 
 })

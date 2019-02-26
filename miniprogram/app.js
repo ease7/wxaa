@@ -2,6 +2,7 @@
 import * as wxConfig from './config/wx.js';
 import wxuser from './api/wxuser.js';
 import user from './api/user.js';
+import CachePool from './api/CachePool.js'
 
 App({
   globalData: {
@@ -36,6 +37,8 @@ App({
       console.log("[system] 当前用户ID获取成功:", ids);
       let openid = ids.openid;
       this.globalData.openid = openid;
+      // 全局缓存openid
+      CachePool.openid = openid;
       let userInfo = wxuser.getStorageUser(openid);
 
       if (userInfo) {

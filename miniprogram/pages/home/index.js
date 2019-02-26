@@ -87,7 +87,6 @@ Page({
         let displayList = [];
         list.forEach(element => {
           displayList.push({
-            displayUpdateTime: utils.formatDate(element.updateTime, "yyyy-MM-dd"),
             ...element
           });
         });
