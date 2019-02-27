@@ -30,7 +30,8 @@
     "my-money": "./components/money/index",
     "my-money-type": "./components/money-type/index",
     "my-cost-type": "./components/cost-type/index",
-    "my-select": "./components/multi-select/index"
+    "my-select": "./components/multi-select/index",
+    "miv": "./components/miv/index"
   },
   "tabBar": {
     "color": "#a9b7b7",

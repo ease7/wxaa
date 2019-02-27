@@ -1,0 +1,29 @@
+/* components/miv/index.wxss */
+
+.miv {
+  min-height: 100vh;
+}
+
+.system-part {
+  max-height: 82vh;
+  display: flex;
+  width: 100%;
+  align-items: center; /*垂直居中*/
+  justify-content: center; /*水平居中*/
+}
+
+.system-part  .icon {
+  display: block;
+  margin: 0 auto;
+  width: 70px;
+  height: 70px;
+}
+
+.system-part .error {
+  background-image: url("~/assets/imgs/common/none-01.png");
+  background-size: 90px 90px;
+  background-repeat: no-repeat;
+  background-position: center top;
+  padding-top: 100px;
+  text-align: center;
+}

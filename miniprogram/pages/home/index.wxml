@@ -1,14 +1,15 @@
 <!-- miniprogram/pages/home/index.wxml -->
-<view>
-  <view class="bill-list">
-    <view class="bill-item" wx:for="{{list}}" wx:key="{{item._id}}">
-      <text class="name" bindtap='editItem' data-index="{{item._id}}">{{item.name}}</text>
-      <text class="des">{{item.description}}</text>
-      <my-value class="time" type="date" value="{{item.updateTime}}"></my-value>
-      <view class="price" bindtap='viewCostList' data-index="{{item._id}}">{{item.total}}</view>
+<view class="container">
+
+  <miv data="{{list}}">
+    <view class="bill-list">
+      <view class="bill-item" wx:for="{{list}}" wx:key="{{item._id}}">
+        <text class="name" bindtap='editItem' data-index="{{item._id}}">{{item.name}}</text>
+        <text class="des">{{item.description}}</text>
+        <my-value class="time" type="date" value="{{item.updateTime}}"></my-value>
+        <view class="price" bindtap='viewCostList' data-index="{{item._id}}">{{item.total}}</view>
+      </view>
+      <button class="add-btn" type="primary" bindtap="addClick">+</button>
     </view>
-    <button class="add-btn weui-btn" type="primary" bindtap="addClick">
-      添加
-    </button>
-  </view>
+  </miv>
 </view>

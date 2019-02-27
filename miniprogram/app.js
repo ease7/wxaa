@@ -11,13 +11,6 @@ App({
     openid: ""
   },
   onLaunch: function() {
-
-    console.log("APP.onLaunch");
-
-    this.globalData.myAppKey = parseInt(Math.random() * 100000);
-
-    console.log(this.globalData.myAppKey);
-
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {

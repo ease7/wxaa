@@ -7,7 +7,8 @@
 
 .bill-list .bill-item {
   padding: 20rpx 25rpx 20rpx 25rpx;
-  border-bottom: 1rpx solid #ccc;
+  margin-bottom: 5rpx;
+  background-color: #fff;
   position: relative;
 }
 
@@ -23,7 +24,7 @@
 }
 
 .bill-item .time {
-  font-size: 28rpx;
+  font-size: 25rpx;
   color: #999;
   display: block;
 }
@@ -36,9 +37,18 @@
   top: 0rpx;
   display: block;
   height: 100%;
-  width:120rpx;
+  width: 120rpx;
 }
 
 .add-btn {
-  width: 50%;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  border: none;
+  background-color: #0f0;
+  position: fixed;
+  right: 30rpx;
+  bottom: 30rpx;
+  font-size: 45rpx;
+  line-height: 100rpx;
 }

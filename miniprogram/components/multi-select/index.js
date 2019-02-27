@@ -58,19 +58,13 @@ Component({
     }
   },
   ready() {
-
-
     let types = apiTypes.getCurrencyTypes();
 
     if (this.data.type === "cost") {
       types = apiTypes.getCostTypes();
     }
 
-    console.log("type list:", types);
-
     let defaultIndex = this.data.value;
-
-    console.log("defaultIndex:", defaultIndex);
 
     this.setData({
       typeList: types,

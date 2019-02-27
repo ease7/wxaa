@@ -15,6 +15,8 @@ class CachePool {
 
   static set openid(value) {
     this.setValue("system", "openid", value);
+    this.setValue("system", "openid_expire_in", new Date().getTime() + 60 * 1000);
+    this.setValue("system", "openid_expire_in", new Date().getTime() + 60 * 1000);
   }
 
   static setValue(name, key, value) {

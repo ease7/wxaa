@@ -92,7 +92,7 @@ Page({
     })
   },
   editClick: function(event) {
-    let billId = this.data.id;
+    let billId = this.data.billId;
     let costId = event.detail.value;
 
     wx.navigateTo({

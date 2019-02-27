@@ -10,7 +10,7 @@
 	},
 	"appid": "wx3ef111ef9b22218f",
 	"projectname": "cloud",
-	"libVersion": "2.2.5",
+	"libVersion": "2.6.1",
 	"condition": {
 		"search": {
 			"current": -1,
