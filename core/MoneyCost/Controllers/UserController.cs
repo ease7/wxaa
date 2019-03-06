@@ -12,16 +12,35 @@ namespace MoneyCost.Controllers
     [Route("api/User")]
     public class UserController : Controller
     {
+        // GET api/values
+        [HttpGet]
+        public IEnumerable<string> Get()
+        {
+            return new string[] { "value1", "value2", "login" };
+        }
+
         /// <summary>
         /// 登陆code换取openid
         /// </summary>
         /// <param name="code"></param>
         /// <returns></returns>
-        public async Task<string> Login(string code)
+           // GET api/user/login
+        [HttpGet("{type}")]
+        public async Task<string> Get(string type, string code)
         {
-            string result = await WeiXinService.JscodeToSessionAsync(code);
+            if(type == "login")
+            {
+                string result = await WeiXinService.JscodeToSessionAsync(code);
 
-            return result;
+                return result;
+
+            }
+            else
+            {
+                return "";
+            }
+
+           
         }
     }
 }
