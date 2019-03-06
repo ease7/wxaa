@@ -1,9 +1,0 @@
-/**app.wxss**/
-@import 'weui.wxss';
-
-.container {
- 
-  box-sizing: border-box;
-  background-color: #f6f6f6;
-  min-height: 100vh;
-} 

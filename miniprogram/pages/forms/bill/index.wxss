@@ -1,5 +1,0 @@
-/* miniprogram/pages/forms/bill/index.wxss */
-
-.input {
-  padding: 20rpx 0;
-}
