@@ -1,0 +1,12 @@
+<!--components/miv/index.wxml-->
+<view class="miv {{status === 1?'':'system-part'}}">
+  <view wx:if="{{status === 0}}">
+    <image class="icon" src='./images/loadding.gif'></image>
+  </view>
+  <view wx:elif="{{status === 1}}">
+    <slot></slot>
+  </view>
+  <view wx:else="{{status < 0}}" class="s4 " >
+    暂无数据
+  </view>
+</view>

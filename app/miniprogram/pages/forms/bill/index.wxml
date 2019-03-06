@@ -1,0 +1,52 @@
+<!-- miniprogram/pages/forms/bill/index.wxml -->
+<view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">名称</view>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" value="{{name}}" placeholder="请输入名称" bindblur='inputNameBlur' />
+      </view>
+
+    </view>
+    <view class="weui-cell weui-cell_input">
+
+
+      <view class="weui-cell__hd">
+        <view class="weui-label">描述</view>
+      </view>
+      <view class="weui-cell__bd input">
+        <textarea class="weui-textarea" value='{{description}}' placeholder="请输入文本" style="height: 3.3em" bindinput='inputDesBlur' maxlength='100' />
+        <view class="weui-textarea-counter">{{descriptionCount}}/100</view>
+      </view>
+
+    </view>
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__hd">
+        <view class="weui-label">货币</view>
+      </view>
+      <view class="weui-cell__bd">
+        <view class="weui-input">
+          <my-select bind:valueChange="valueChange" value="{{currencyType}}"></my-select>
+        </view>
+
+      </view>
+    </view>
+  </view>
+  <view class="weui-cells__title">人员</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell" wx:for="{{users}}">
+      <view class="weui-cell__hd">
+        <image src="{{item.avatarUrl}}" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+      </view>
+      <view class="weui-cell__bd">{{item.nickName}}</view>
+
+    </view>
+  </view>
+  <view class="weui-btn-area">
+
+    <button class="weui-btn" type="primary" bindtap="saveClick">确定</button>
+    <button class="weui-btn" wx:if="{{editId.length > 0}}" type="primary" open-type='share'>邀请加入</button>
+  </view>
+</view>

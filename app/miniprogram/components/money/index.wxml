@@ -1,0 +1,9 @@
+<!--components/money/index.wxml-->
+
+<!-- 金钱数据输入框 -->
+<view class="money-input">
+  <input class="money-input-text" placeholder="0.00" maxlength="10" bindblur='inputChange' />
+  <picker class="money-input-type" value="{{currencyTypeIndex}}" range="{{currencyTypes}}" range-key="name" bindchange="bindTypeChange">
+    <view class="weui-input">{{currencyTypeValue}}</view>
+  </picker>
+</view>

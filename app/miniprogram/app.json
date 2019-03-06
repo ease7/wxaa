@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/forms/cost/index",
+    "pages/cost/list",
+    "pages/share/bill/index",
+    "pages/user/login/index",
+    "pages/index/index",
+    "pages/forms/bill/index",
+    "pages/bills/index",
+    "pages/mybills/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/us/index",
+    "components/multi-select/index"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart",
+    "navigationBarTextStyle": "black"
+  },
+  "usingComponents": {
+    "my-value": "./components/value/value",
+    "my-money": "./components/money/index",
+    "my-money-type": "./components/money-type/index",
+    "my-cost-type": "./components/cost-type/index",
+    "my-select": "./components/multi-select/index",
+    "miv": "./components/miv/index"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#11cd6e",
+    "borderStyle": "black",
+    "list": [
+      {
+        "selectedIconPath": "images/nav_index.png",
+        "iconPath": "images/nav_index.png",
+        "pagePath": "pages/home/index",
+        "text": "首页"
+      },
+      {
+        "selectedIconPath": "images/nav_index.png",
+        "iconPath": "images/nav_index.png",
+        "pagePath": "pages/us/index",
+        "text": "关于我们"
+      }
+    ]
+  }
+}

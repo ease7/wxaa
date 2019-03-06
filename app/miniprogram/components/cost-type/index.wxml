@@ -1,0 +1,4 @@
+<!--components/cost-type/index.wxml-->
+<picker class="money-input-type" value="{{currencyTypeIndex}}" range="{{currencyTypes}}" range-key="name" bindchange="bindTypeChange">
+  <view class="weui-input">{{currencyTypeValue}}</view>
+</picker>

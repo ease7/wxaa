@@ -1,0 +1,5 @@
+/* components/value/value.wxss */
+
+.input {
+  height: 100rpx;
+}

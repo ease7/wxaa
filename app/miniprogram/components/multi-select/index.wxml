@@ -1,0 +1,4 @@
+
+<picker class="money-input-type" value="{{selectedIndex}}" range="{{typeList}}" range-key="name" bindchange="bindTypeChange">
+  <view class="weui-input">{{selectedValue}}</view>
+</picker>

@@ -1,0 +1,60 @@
+/* miniprogram/pages/list/index.wxss */
+
+
+.list-root {
+    width: 100%;
+    position: relative;
+    font-size: 30rpx;
+    background-color: #ccc;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+.list-root .list {
+
+    position: relative;
+
+    margin: 0 auto;
+}
+
+.list-root .list .item {
+    border-bottom: 1rpx solid #eee;
+    padding: 20rpx 20rpx 20rpx 120rpx;
+    margin-bottom: 3rpx;
+    position: relative;
+    min-height: 100rpx;
+}
+
+.list-root .list .icon {
+    width: 80rpx;
+    height: 80rpx;
+    padding: 10rpx 0;
+    box-sizing: border-box;
+    background-color: #eee;
+    border-radius: 80rpx;
+    /* background-image: url('../../assets/images/dining-256.png'); */
+    background-size: 60rpx 60rpx;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10rpx;
+    left: 20rpx;
+}
+
+.list-root .list .icon .icon-image {
+    width: 60rpx;
+    height: 60rpx;
+    margin: 0 auto;
+    display: block;
+}
+
+.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    border-top: 1rpx solid #ccc;
+
+}
