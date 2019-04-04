@@ -1,8 +1,7 @@
 class wxuser {
 
   // 函数获取用户ID
-  static getUserId() {
-
+  static getUserIdFunc() {
     return new Promise((resolve, reject) => {
       wx.cloud.callFunction({
         name: 'login',
@@ -25,6 +24,55 @@ class wxuser {
         }
       })
     });
+
+  }
+
+  static getUserIdServer() {
+
+    wx.login({
+      success: res => {
+        let code = res.code || "";
+
+        wx.request({
+          url: 'https://a.51postal.com/user/login',
+          data: {
+            code: res.code
+          },
+          method: "GET",
+          success: (res) => {
+            let {
+              data
+            } = res;
+
+            console.log(data)
+
+            this.globalData.openid = data.openid;
+            let session_id = data.session_key;
+            this.globalData.session_key = data.session_key
+            this.globalData.openid = data.openid
+
+            // var session_data = data.session_data;
+            // var session_id = session_data.session_id;
+            // var expires = session_data.expires;
+            // var data = session_data.data;
+            //将session_id保存到本地数据库
+            wx.setStorageSync('session_info', JSON.stringify(data))
+
+            if (obj && obj.success) {
+              obj.success(data);
+            }
+
+          }
+
+        })
+
+      }
+    })
+
+  }
+
+  static getUserId() {
+    return getUserIdFunc();
 
   }
 
@@ -74,7 +122,7 @@ class wxuser {
    * 获取当前用户信息
    */
   static getCurrentUser() {
-  
+
   }
 
   // 保存用户信息到缓存里
